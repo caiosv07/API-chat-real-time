@@ -1,0 +1,16 @@
+[project]
+name = "chatapi"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "caio henrique",email = "caiosv0720@gmail.com"}
+]
+readme = "README.md"
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = '-p no:warnings'
+
+[tool.taskipy.tasks]
+test = 'pytest -s -x --cov=chatapp --cov-report=term -vv'
+post_test = 'coverage html'

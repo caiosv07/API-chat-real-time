@@ -1,0 +1,56 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# If you use Django collectstatic
+static/
+
+# Django migrations (opcional, caso queira ignorar em desenvolvimento)
+# **mas normalmente você deve versionar as migrations**
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# Environment variables
+.env
+*.env
+
+# VS Code / PyCharm
+.vscode/
+.idea/
+
+# Python virtualenv
+venv/
+ENV/
+env/
+.venv/
+
+# Testing
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+htmlcov/
+
+# Pytest
+.pytest_cache/
+.cache/
+
+# Jupyter
+.ipynb_checkpoints
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
