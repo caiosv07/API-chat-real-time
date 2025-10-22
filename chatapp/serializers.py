@@ -12,13 +12,13 @@ class SalaSerializer(serializers.ModelSerializer):
 class ChatUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChatUser
-        fields = ['sala', 'user', 'joined_at']
+        fields = ['sala', 'user', 'joined_at', 'is_admin']
         
 
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
-        fields = ['sala', 'sender', 'content', 'message_type', 'file', 'created_at']
+        fields = ['sala', 'sender', 'content', 'message_type', 'created_at']
         
 
 class RegisterSerializer(serializers.ModelSerializer):

@@ -74,8 +74,14 @@ def Criar_Sala(request):
 def adicionar_usuario_na_sala(request):
     serializer = ChatUserSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        chat_user = serializer.save()
+        return Response({
+            "message": "user added to the room",
+            "user": chat_user.user.id,            # 🔹 ID, não o objeto
+            "sala": chat_user.sala.id,            # 🔹 ID, não o objeto
+            "is_admin": chat_user.is_admin,
+            "joined_at": chat_user.joined_at,
+        },  status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
@@ -92,11 +98,15 @@ def enviar_mensagem(request):
 def listar_mensagens(request, sala_id):
     mensagens = Message.objects.filter(sala_id=sala_id).order_by('created_at')
     serializer = MessageSerializer(mensagens, many=True)
-    return Response(serializer.data)
+
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def listar_salas(request):
     sala = ChatSala.objects.all().order_by('created_at')
     serializer = SalaSerializer(sala, many=True)
-    return Response(serializer.data)
+  
+    return Response(serializer.data, status=status.HTTP_200_OK)
+   
