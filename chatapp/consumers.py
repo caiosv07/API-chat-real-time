@@ -23,7 +23,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         self.sala_name = self.scope['url_route']['kwargs']['sala_name']
         self.sala_group_name = f'chat_{self.sala_name}'
 
-        # Adiciona o usuário ao grupo da sala
         await self.channel_layer.group_add(
             self.sala_group_name,
             self.channel_name
@@ -32,7 +31,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.accept()
 
     async def disconnect(self, close_code):
-        # Remove do grupo da sala
+    
         await self.channel_layer.group_discard(
             self.sala_group_name,
             self.channel_name
@@ -51,10 +50,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
             }))
             return
 
-        # Salva a mensagem no banco
+
         msg_obj = await self.save_message(user, self.sala_name, message, message_type)
 
-        # Envia para todos no grupo
         await self.channel_layer.group_send(
             self.sala_group_name,
             {
