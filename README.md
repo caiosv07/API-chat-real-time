@@ -1,6 +1,6 @@
 # 💬 API Chat Real Time
 
-Uma API de chat em tempo real construída com **Python**, **Django**, **Django REST Framework**, **Redis** e **WebSockets**, totalmente conteinerizada com **Docker Compose**.  
+Uma API de chat em tempo real construída com **Python**, **Django**, **Django REST Framework**,**PostgreSQL**, **Redis** e **WebSockets**, totalmente conteinerizada com **Docker Compose**.  
 
 
 ---
