@@ -26,3 +26,9 @@ git clone https://github.com/caiosv07/API-chat-real-time.git
 cd API-chat-real-time
 
 docker-compose up --build
+
+# criar ambiente virtual 
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+pip install -r requirements.txt
